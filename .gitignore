@@ -13,7 +13,14 @@ out/
 ### Java ###
 # Compiled class file
 *.class
-src/Practice
+src/Practice.java
+
+# User-specific stuff:
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/dictionaries
+**/.idea/vcs.xml
+**/.idea/jsLibraryMappings.xml
 
 # Log file
 *.log
