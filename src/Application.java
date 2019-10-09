@@ -22,7 +22,7 @@ public class Application {
         System.out.println("What is your email?");
         // Check if email is valid with regex
         String email = inputUser.nextLine();
-
+        arda.setEmail(email);
         // Ask for email as long it doesn't match
         while (!Profile.isValidEmail(email)) {
             System.out.println("Your email is not in correct format");
