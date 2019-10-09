@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
 
+        // Display Gui
+        GUI gui = new GUI();
+
         // Create scanner object
         Scanner inputUser = new Scanner(System.in);
         // Create Profile object
@@ -36,6 +39,7 @@ public class Application {
         System.out.println("How old are you?");
         arda.setAge(inputUser.nextInt());
 
+        // En buyuk GOZTEPEEEEEE:D
         System.out.println("What is your weight? (in kg)");
         arda.setWeight(inputUser.nextDouble());
 
