@@ -5,8 +5,8 @@ public class Application {
 
         // Create scanner object
         Scanner inputUser = new Scanner(System.in);
-        // Create profil object
-        Profil arda = new Profil();
+        // Create Profile object
+        Profile arda = new Profile();
 
         // Ask for his/her name
         System.out.println("Enter your first name");
@@ -24,10 +24,10 @@ public class Application {
         String email = inputUser.nextLine();
 
         // Ask for email as long it doesn't match
-        while (!Profil.isValidEmail(email)) {
+        while (!Profile.isValidEmail(email)) {
             System.out.println("Your email is not in correct format");
             email = inputUser.nextLine();
-            if (Profil.isValidEmail(email)) {
+            if (Profile.isValidEmail(email)) {
                 arda.setEmail(email);
                 break;
             }

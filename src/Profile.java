@@ -1,9 +1,9 @@
 /**
- * The Profil class stores various information about people
+ * The Profile class stores various information about people
  *
  * @author Arda Ipek : ipek.arda.pro@gmail.com
  */
-public class Profil {
+public class Profile {
 
     private String name;
     private String lastName;
@@ -11,7 +11,7 @@ public class Profil {
     private double weight;
     private String email;
 
-    public Profil() {
+    public Profile() {
 
     }
 
