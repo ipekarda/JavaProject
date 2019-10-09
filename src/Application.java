@@ -1,8 +1,33 @@
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+        // Create Profile object
+        Profile arda = new Profile();
 
+        // User Interface
+        UI myUI = new UI();
+        myUI.textFieldName.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                arda.setName(myUI.textFieldName.getText());
+                System.out.println(arda.getName());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+
+        /*
         // Create scanner object
         Scanner inputUser = new Scanner(System.in);
         // Create Profile object
@@ -41,5 +66,8 @@ public class Application {
 
         // Output all info with
         System.out.println(arda.getAllInfo());
+
+         */
+
     }
 }
