@@ -1,3 +1,4 @@
+import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
@@ -16,33 +17,33 @@ public class Application {
         myUI.textFieldName.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldName);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldName);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldName);
             }
         });
         myUI.textFieldLastName.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldLastName);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldLastName);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldLastName);
             }
         });
         myUI.textFieldEmail.getDocument().addDocumentListener(new DocumentListener() {
@@ -64,73 +65,76 @@ public class Application {
         myUI.textFieldWeight.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldWeight);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldWeight);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldWeight);
             }
         });
         myUI.textFieldAge.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldAge);
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldAge);
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-
+                wrongInput = changed(myUI.textFieldAge);
             }
         });
         // Submit the forms of the new profile
         myUI.buttonSubmit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println(wrongInput);
                 // Insert data
-                if (myUI.textFieldName.getText() != "") {
+                if (!myUI.textFieldName.getText().equals("")) {
                     arda.setName(myUI.textFieldName.getText());
-                    myUI.frame.remove(myUI.labelNameWrong);
+                    myUI.labelNameWrong.setVisible(false);
                 } else {
-                    myUI.frame.add(myUI.labelNameWrong);
+                    myUI.labelNameWrong.setVisible(true);
                     wrongInput = true;
                 }
-                if (myUI.textFieldName.getText() != "") {
+                if (!myUI.textFieldLastName.getText().equals("")) {
                     arda.setLastName(myUI.textFieldLastName.getText());
-                    myUI.frame.remove(myUI.labelLastNameWrong);
+                    myUI.labelLastNameWrong.setVisible(false);
                 } else {
-                    myUI.frame.add(myUI.labelLastNameWrong);
+                    myUI.labelLastNameWrong.setVisible(true);
                     wrongInput = true;
                 }
                 if (!arda.isValidEmail(myUI.textFieldEmail.getText())) {
-                    myUI.frame.add(myUI.labelEmailWrong);
+                    System.out.println("Email input wrong!");
+                    myUI.labelEmailWrong.setVisible(true);
                     wrongInput = true;
                 } else {
                     arda.setEmail(myUI.textFieldEmail.getText());
-                    myUI.frame.remove(myUI.labelEmailWrong);
+                    System.out.println("Email input correct");
+                    myUI.labelEmailWrong.setVisible(false);
                 }
-                if (myUI.textFieldWeight.getText() != "") {
+                if (!myUI.textFieldWeight.getText().equals("")) {
                     arda.setWeight(Double.parseDouble(myUI.textFieldWeight.getText()));
-                    myUI.frame.remove(myUI.labelWeightWrong);
+                    myUI.labelWeightWrong.setVisible(false);
                 } else {
-                    myUI.frame.add(myUI.labelWeightWrong);
+                    myUI.labelWeightWrong.setVisible(true);
                     wrongInput = true;
                 }
-                if (myUI.textFieldAge.getText() != "") {
+                if (!myUI.textFieldAge.getText().equals("")) {
                     arda.setAge(Integer.parseInt(myUI.textFieldAge.getText()));
-                    myUI.frame.remove(myUI.labelAgeWrong);
+                    myUI.labelAgeWrong.setVisible(false);
                 } else {
-                    myUI.frame.add(myUI.labelAgeWrong);
+                    myUI.labelAgeWrong.setVisible(true);
                     wrongInput = true;
                 }
                 if (!wrongInput)
@@ -142,7 +146,9 @@ public class Application {
             }
         });
 
-        /*
+
+        /* First starting off as a console programme
+         *
         // Create scanner object
         Scanner inputUser = new Scanner(System.in);
         // Create Profile object
@@ -184,5 +190,11 @@ public class Application {
 
          */
 
+    }
+    // Text in the text field may have changed and contains a fault
+    private static boolean changed(JTextField textField) {
+        if (textField.getText().equals(""))
+            return true;
+        return false;
     }
 }

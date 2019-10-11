@@ -7,9 +7,12 @@ public class UI {
     // Components of frame
     JLabel labelTitle, labelName, labelLastName, labelAge, labelWeight, labelEmail;
     JLabel labelNameWrong, labelLastNameWrong, labelAgeWrong, labelWeightWrong, labelEmailWrong;
-    JTextArea textAreaSummary;
     JTextField textFieldName, textFieldLastName, textFieldAge, textFieldWeight, textFieldEmail;
     JButton buttonSubmit;
+    // Array lists make things easier thanks to loops
+    ArrayList<JLabel> listLabels;
+    ArrayList<JLabel> listLabelsWrong;
+    ArrayList<JTextField> listTextFields;
 
     // Constructor
     public UI() {
@@ -52,31 +55,46 @@ public class UI {
         // Button
         buttonSubmit = new JButton("Submit");
         buttonSubmit.setBounds(150, 400, 100, 50);
-        // Text area
-        textAreaSummary = new JTextArea("Name\nLast Name\nEmail\nWeight\nAge");
-        textAreaSummary.setBounds(50, 450, 200, 100);
+        // Lists
+        listLabels = new ArrayList<JLabel>();
+        listLabelsWrong = new ArrayList<JLabel>();
+        listTextFields = new ArrayList<JTextField>();
+        // Add components into the list
+        listLabels.add(labelTitle);
+        listLabels.add(labelName);
+        listLabels.add(labelLastName);
+        listLabels.add(labelEmail);
+        listLabels.add(labelWeight);
+        listLabels.add(labelAge);
+        listLabelsWrong.add(labelNameWrong);
+        listLabelsWrong.add(labelLastNameWrong);
+        listLabelsWrong.add(labelEmailWrong);
+        listLabelsWrong.add(labelWeightWrong);
+        listLabelsWrong.add(labelAgeWrong);
+        listTextFields.add(textFieldName);
+        listTextFields.add(textFieldLastName);
+        listTextFields.add(textFieldEmail);
+        listTextFields.add(textFieldWeight);
+        listTextFields.add(textFieldWeight);
+        listTextFields.add(textFieldAge);
         // Set frame
         frame.setSize(400, 600);
         frame.setLayout(null);
         frame.setVisible(true);
         // Adding components into the frame
-        frame.add(labelTitle);
-        frame.add(labelName);
-        // frame.add(labelNameWrong);
-        frame.add(labelLastName);
-        // frame.add(labelLastNameWrong);
-        frame.add(labelEmail);
-        // frame.add(labelEmailWrong);
-        frame.add(labelWeight);
-        // frame.add(labelWeightWrong);
-        frame.add(labelAge);
-        // frame.add(labelAgeWrong);
-        frame.add(textFieldName);
-        frame.add(textFieldLastName);
-        frame.add(textFieldAge);
-        frame.add(textFieldWeight);
-        frame.add(textFieldEmail);
-        // frame.add(textAreaSummary);
+        addComponents();
+        // Make the warning labels invisible at first
+        unableWarningLabels();
+    }
+    // Add all components into the frame
+    private void addComponents() {
+        listLabels.forEach((label) -> frame.add(label));
+        listLabelsWrong.forEach((label) -> frame.add(label));
+        listTextFields.forEach((textField) -> frame.add(textField));
         frame.add(buttonSubmit);
+    }
+    // Since there is no fault in the beginning, there must be no warning either
+    private void unableWarningLabels() {
+        listLabelsWrong.forEach((label) -> label.setVisible(false));
     }
 }
