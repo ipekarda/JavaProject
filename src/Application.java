@@ -3,6 +3,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 public class Application {
@@ -30,6 +32,21 @@ public class Application {
                 wrongInput = changed(myUI.textFieldName);
             }
         });
+        myUI.textFieldName.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c)) && (c != '\b'))
+                    e.consume();
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c)) && (c != '\b'))
+                    e.consume();
+            }
+        });
         myUI.textFieldLastName.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -44,6 +61,21 @@ public class Application {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 wrongInput = changed(myUI.textFieldLastName);
+            }
+        });
+        myUI.textFieldLastName.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c)) && (c != '\b'))
+                    e.consume();
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c)) && (c != '\b'))
+                    e.consume();
             }
         });
         myUI.textFieldEmail.getDocument().addDocumentListener(new DocumentListener() {
@@ -78,6 +110,21 @@ public class Application {
                 wrongInput = changed(myUI.textFieldWeight);
             }
         });
+        myUI.textFieldWeight.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c)) && (c != '\b'))
+                    e.consume();
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c)) && (c != '\b'))
+                    e.consume();
+            }
+        });
         myUI.textFieldAge.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -92,6 +139,21 @@ public class Application {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 wrongInput = changed(myUI.textFieldAge);
+            }
+        });
+        myUI.textFieldAge.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c)) && (c != '\b'))
+                    e.consume();
+            }
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c)) && (c != '\b'))
+                    e.consume();
             }
         });
         // Submit the forms of the new profile
@@ -145,7 +207,6 @@ public class Application {
                 }
             }
         });
-
 
         /* First starting off as a console programme
          *
