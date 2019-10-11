@@ -1,65 +1,82 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class UI {
+    // Frame
     JFrame frame;
-
-    // Components
-    JLabel labelName, labelLastName, labelContinue, labelAge, labelWeight, labelEmail, labelEmailWrong, labelInfo;
+    // Components of frame
+    JLabel labelTitle, labelName, labelLastName, labelAge, labelWeight, labelEmail;
+    JLabel labelNameWrong, labelLastNameWrong, labelAgeWrong, labelWeightWrong, labelEmailWrong;
+    JTextArea textAreaSummary;
     JTextField textFieldName, textFieldLastName, textFieldAge, textFieldWeight, textFieldEmail;
+    JButton buttonSubmit;
 
     // Constructor
     public UI() {
         // Frame
         frame = new JFrame();
         // Labels
+        labelTitle = new JLabel("Create a new profile:");
+        labelTitle.setBounds(100, 20, 200, 30);
         labelName = new JLabel("Enter your first name");
-        labelName.setBounds(50,200, 200, 20);
+        labelName.setBounds(100,50, 200, 20);
+        labelNameWrong = new JLabel("Please enter a valid name");
+        labelNameWrong.setBounds(100,100, 200, 20);
         labelLastName = new JLabel("Enter your last name");
-        labelLastName.setBounds(50,260, 200, 20);
-        labelContinue = new JLabel("Hello blabla please continue..");
-        labelContinue.setBounds(50,320, 200, 20);
+        labelLastName.setBounds(100,120, 200, 20);
+        labelLastNameWrong = new JLabel("Please enter a valid name");
+        labelLastNameWrong.setBounds(100,170, 200, 20);
         labelEmail = new JLabel("What is your email?");
-        labelEmail.setBounds(50,350, 200, 20);
+        labelEmail.setBounds(100,190, 200, 20);
         labelEmailWrong = new JLabel("Your email is not in correct format");
-        labelEmailWrong.setBounds(50,400, 200, 20);
+        labelEmailWrong.setBounds(100,240, 200, 20);
         labelWeight = new JLabel("What is your weight? (in kg)");
-        labelWeight.setBounds(50,430, 200, 20);
+        labelWeight.setBounds(100,260, 200, 20);
+        labelWeightWrong = new JLabel("Please enter a valid weight");
+        labelWeightWrong.setBounds(100,310, 200, 20);
         labelAge = new JLabel("How old are you?");
-        labelAge.setBounds(50,490, 200, 20);
-        labelInfo = new JLabel("Name\nLast Name\nEmail\nWeight\nAge");
-        labelInfo.setBounds(50, 550, 200, 100);
-        // Textfields
+        labelAge.setBounds(100,330, 200, 20);
+        labelAgeWrong = new JLabel("Please enter a valid age");
+        labelAgeWrong.setBounds(100,380, 200, 20);
+        // Text fields
         textFieldName = new JTextField();
-        textFieldName.setBounds(50,220, 200,30);
+        textFieldName.setBounds(100,70, 200,30);
         textFieldLastName = new JTextField();
-        textFieldLastName.setBounds(50,280, 200,30);
+        textFieldLastName.setBounds(100,140, 200,30);
         textFieldEmail = new JTextField();
-        textFieldEmail.setBounds(50,370, 200,30);
+        textFieldEmail.setBounds(100,210, 200,30);
         textFieldWeight = new JTextField();
-        textFieldWeight.setBounds(50,450, 50,30);
+        textFieldWeight.setBounds(100,280, 50,30);
         textFieldAge = new JTextField();
-        textFieldAge.setBounds(50,510, 50,30);
-
+        textFieldAge.setBounds(100,350, 50,30);
+        // Button
+        buttonSubmit = new JButton("Submit");
+        buttonSubmit.setBounds(150, 400, 100, 50);
+        // Text area
+        textAreaSummary = new JTextArea("Name\nLast Name\nEmail\nWeight\nAge");
+        textAreaSummary.setBounds(50, 450, 200, 100);
         // Set frame
-        frame.setSize(400, 900);
+        frame.setSize(400, 600);
         frame.setLayout(null);
         frame.setVisible(true);
         // Adding components into the frame
+        frame.add(labelTitle);
         frame.add(labelName);
+        // frame.add(labelNameWrong);
         frame.add(labelLastName);
-        frame.add(labelContinue);
+        // frame.add(labelLastNameWrong);
         frame.add(labelEmail);
-        frame.add(labelEmailWrong);
-        frame.add(labelAge);
+        // frame.add(labelEmailWrong);
         frame.add(labelWeight);
-        frame.add(labelInfo);
+        // frame.add(labelWeightWrong);
+        frame.add(labelAge);
+        // frame.add(labelAgeWrong);
         frame.add(textFieldName);
         frame.add(textFieldLastName);
         frame.add(textFieldAge);
         frame.add(textFieldWeight);
         frame.add(textFieldEmail);
+        // frame.add(textAreaSummary);
+        frame.add(buttonSubmit);
     }
-
-
-
 }
