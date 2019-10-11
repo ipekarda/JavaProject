@@ -1,5 +1,3 @@
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.util.Scanner;
 
 public class Application {
@@ -7,31 +5,8 @@ public class Application {
         // Create Profile object
         Profile arda = new Profile();
 
-        // User Interface
-        UI myUI = new UI();
-        myUI.textFieldName.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                arda.setName(myUI.textFieldName.getText());
-                System.out.println(arda.getName());
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-
-            }
-        });
-
-        /*
         // Create scanner object
         Scanner inputUser = new Scanner(System.in);
-        // Create Profile object
-        Profile arda = new Profile();
 
         // Ask for his/her name
         System.out.println("Enter your first name");
@@ -45,11 +20,13 @@ public class Application {
         System.out.println("Hello " + arda.getFullName() + " please continue...");
 
         System.out.println("What is your email?");
+
         // Check if email is valid with regex
         String email = inputUser.nextLine();
         arda.setEmail(email);
+
         // Ask for email as long it doesn't match
-        while (!Profile.isValidEmail(email)) {
+        while (!Profile.isValidEmail(email) || email.isEmpty()) {
             System.out.println("Your email is not in correct format");
             email = inputUser.nextLine();
             if (Profile.isValidEmail(email)) {
@@ -61,13 +38,26 @@ public class Application {
         System.out.println("How old are you?");
         arda.setAge(inputUser.nextInt());
 
-        System.out.println("What is your weight? (in kg)");
-        arda.setWeight(inputUser.nextDouble());
-
         // Output all info with
         System.out.println(arda.getAllInfo());
 
-         */
+        // Ask for the course they want to follow
+        System.out.println("Which course would you like to follow?");
+        arda.displayCourses();
+        // store the the selected course
+        arda.setSelectedCourse(arda.getSelectedCourseByIndex(inputUser.nextInt()));
+
+        System.out.println("Do you have right for a scholarship?");
+        System.out.printf("Type Yes or No please: ");
+
+        // skip the new line
+        // this a workaround I found on stack overflow
+        // https://stackoverflow.com/questions/7877529/java-string-scanner-input-does-not-wait-for-info-moves-directly-to-next-stateme?rq=1
+        inputUser.nextLine();
+
+        arda.checkYesOrNo(inputUser.nextLine());
+
+        System.out.println(arda.confirmSubscription());
 
     }
 }

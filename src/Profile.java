@@ -3,13 +3,22 @@
  *
  * @author Arda Ipek : ipek.arda.pro@gmail.com
  */
-public class Profile {
+public class Profile extends Student {
 
     private String name;
     private String lastName;
     private int age;
-    private double weight;
     private String email;
+
+    public String getSelectedCourse() {
+        return selectedCourse;
+    }
+
+    public void setSelectedCourse(String selectedCourse) {
+        this.selectedCourse = selectedCourse;
+    }
+
+    private String selectedCourse;
 
     public Profile() {
 
@@ -58,19 +67,14 @@ public class Profile {
         this.age = age;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     public String getFullName() {
         return name + " " + lastName;
     }
 
     public String getAllInfo() {
-        return "First name: " + name + "\nLast name: " + lastName + "\nEmail: " + email + "\nAge: " + age + "\nWeight: " + weight + "kg";
+        return "First name: " + name + "\nLast name: " + lastName + "\nEmail: " + email + "\nAge: " + age;
+    }
+    public String confirmSubscription(){
+        return "Congratulations " + getFullName() + "!\nYou are successfully enrolled for " + getSelectedCourse() + "\nThe money due is: " + calcMoneyDue() + " EUR\nThank you!";
     }
 }
