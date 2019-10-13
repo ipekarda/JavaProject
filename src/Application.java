@@ -10,7 +10,11 @@ import java.util.Scanner;
 public class Application {
     private static int profileID = 1;           // Profile ID starting from 1
     private static boolean wrongInput = false;  // Detecting wrong inputs at submitting
+
     public static void main(String[] args) {
+        // Demo
+        Calculator.main(args);
+
         // Create Profile object
         Profile arda = new Profile(profileID++);
 
@@ -252,6 +256,7 @@ public class Application {
          */
 
     }
+
     // Text in the text field may have changed and contains a fault
     private static boolean changed(JTextField textField) {
         if (textField.getText().equals(""))
