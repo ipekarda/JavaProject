@@ -14,6 +14,9 @@ public class Isogram {
         System.out.println("This should return false: " + Isogram.isIsogramEfficient("machineM"));
         System.out.println("This should return true: " + Isogram.isIsogramEfficient("machine"));
         System.out.println("This should return true: " + Isogram.isIsogramEfficient(""));
+
+        Isogram iso = new Isogram();
+        System.out.println(iso.squareDigits(44));
     }
 
     public static boolean isIsogramEfficient(String str) {
@@ -46,6 +49,24 @@ public class Isogram {
             return false;
         }
     }
+
+    /**
+     * Welcome. In this kata, you are asked to square every digit of a number.
+     *
+     * For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1.
+     *
+     * Note: The function accepts an integer and returns an integer
+     */
+
+    public int squareDigits(int n) {
+        String result = "";
+        for (char c : String.valueOf(n).toCharArray()) {
+
+            result += (int) Math.pow(Integer.valueOf(String.valueOf(c)), 2);
+        }
+        return Integer.valueOf(result);
+    }
+
 
     /*
      * A different approach to compare each char in a string
